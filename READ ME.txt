@@ -1,0 +1,149 @@
+为了避免过于冗杂，五个代码的read me使用说明均放在此。
+鸟类识别
+核心环境
+Python 3.7~3.10
+ PyTorch 1.13.1+cu117
+依赖库
+torchvision：版本 0.14.1+cu117
+NumPy：版本≥1.21.0
+Pandas：版本≥1.3.0
+Matplotlib：版本≥3.4.0
+scikit-learn：版本≥0.24.0
+Pillow (PIL)：版本≥8.2.0
+文件结构
+# 数据集（CUB-200-2011）
+F:\bird--CNN\data.bird\dataset/
+├── classes.txt          # 类别名（格式：1 Black_footed_Albatross）
+├── images.txt           # 图片路径（格式：1 001.Black_footed_Albatross/xxx.jpg）
+├── image_class_labels.txt # 图片标签（格式：1 1）
+└── images/              # 200类鸟类图片文件夹
+# 测试集
+F:\bird--CNN\data.bird\test/
+└── *.jpg/*.png          # 待预测的鸟类图片
+# 输出
+bird_efficientnetb4.pth # 训练后模型权重
+efficientnet_training_curve.png # 训练曲线
+efficientnet_prediction_*.png # 预测可视化结果
+
+
+
+宠物识别
+核心环境
+Python 3.7~3.10
+PyTorch 1.13.1+cu117
+依赖库
+ultralytics：版本≥8.0.0（YOLOv8 核心库）
+torchvision：版本 0.14.1+cu117
+NumPy：版本≥1.21.0
+Matplotlib：版本≥3.4.0
+Pillow (PIL)：版本≥8.2.0
+opencv-python (cv2)：版本≥4.5.0
+scipy：版本≥1.7.0（ultralytics 依赖）
+textwrap：Python 内置（无需额外安装）
+pathlib：Python 内置（无需额外安装）
+文件结构
+# 数据集（车辆检测）
+F:\bird--CNN\data.cars/
+├── car_image_1.jpg      # 待检测车辆图片
+├── car_image_2.png      # 支持jpg/jpeg/png/bmp/tiff格式
+├── subdir/              # 支持子目录递归读取
+│   └── dense_cars.jpg   # 密集车辆场景图片
+└── ...（任意数量/层级的车辆图片）
+# 输出（无持久化文件，仅弹窗展示结果）
+# 检测结果以独立弹窗形式展示（左图：检测可视化；右图：统计信息）
+# 控制台输出批量检测汇总数据
+
+
+
+花卉识别
+核心环境
+Python 3.7~3.10
+PyTorch 1.13.1+cu117
+依赖库
+torchvision：版本 0.14.1+cu117
+NumPy：版本≥1.21.0
+Matplotlib：版本≥3.4.0
+Pillow (PIL)：版本≥8.2.0
+scipy：版本≥1.7.0
+json：Python 内置（无需额外安装）
+文件结构
+# 数据集（Oxford Flowers 102）
+F:\bird--CNN\data.flowers\dataset/
+├── jpg/                 # 花卉图片文件夹
+│   ├── image_00001.jpg  # 图片命名格式：image_xxxxxx.jpg（6位数字，1-based编号）
+│   └── ...（共8189张图片）
+├── imagelabels.mat      # 标签文件：存储每张图片对应的类别ID（1~102）
+├── setid.mat            # 划分文件：存储train/val/test集的图片编号（trnid/valid/tstid）
+└── cat_to_name.json     # 类别映射文件（JSON格式）
+    # 格式示例：{"1": ["pink primrose", "粉报春"], "2": ["hard-leaved pocket orchid", "硬叶兜兰"], ...}
+# 测试集
+F:\bird--CNN\data.flowers/test/
+└── *.jpg/*.jpeg/*.png/*.bmp/*.webp  # 待预测的花卉图片
+# 输出
+flowers102_resnet50_best.pt # 训练后最优模型权重（含模型参数+配置信息）
+
+
+
+车辆识别
+核心环境
+Python 3.7~3.10
+PyTorch 1.13.1+cu117
+依赖库
+torchvision：版本 0.14.1+cu117
+NumPy：版本≥1.21.0
+Matplotlib：版本≥3.4.0
+Pillow (PIL)：版本≥8.2.0
+文件结构
+# 数据集（Oxford-IIIT Pets）
+F:\bird--CNN\data.pets/
+├── images/              # 宠物图片文件夹（xxx.jpg/xxx.png等格式）
+└── annotations/         # 标注文件夹
+    ├── trainval.txt     # 训练验证集划分（格式：img_stem class_id ...）
+    ├── test.txt         # 测试集划分（格式同trainval.txt）
+    └── list.txt         # 类别映射辅助文件（可选，格式同trainval.txt）
+# 测试集
+F:\bird--CNN\data.pets/test/
+└── *.jpg/*.jpeg/*.png/*.bmp/*.webp  # 待预测的宠物图片
+# 输出
+pets_resnet50_best.pt # 训练后最优模型权重（含模型参数+类别数）
+
+
+
+歌词风格分类
+核心环境
+Python 3.7~3.10
+PyTorch1.13.1+cu117
+依赖库
+transformers：版本≥4.20.0
+torchvision：版本 0.14.1+cu117
+NumPy：版本≥1.21.0
+Pandas：版本≥1.3.0
+Matplotlib：版本≥3.4.0
+seaborn：版本≥0.11.0
+scikit-learn：版本≥0.24.0
+nlpaug：版本≥1.1.10
+nltk：版本≥3.7
+datasets：版本≥2.0.0
+tqdm：版本≥4.62.0
+re：Python 内置（无需额外安装）
+warnings：Python 内置（无需额外安装）
+文件结构
+# 数据集（歌词风格分类）
+./
+├── music_lyrics_genre_bilingual_full.csv  # 训练数据集
+    # CSV格式要求：包含"lyrics"（歌词文本）、"genre"（流派标签）列
+    # 流派需包含：流行/摇滚/嘻哈/民谣/爵士/电子/乡村/金属/R&B/古典
+└── F:\bird--CNN\data.music\test/          # 测试歌词文件夹
+    ├── lyrics_1.txt                       # 待预测的歌词文本文件（.txt格式）
+    ├── lyrics_2.txt
+    └── ...（任意数量的txt歌词文件）
+# 输出
+./music_genre_model_pro/                   # 训练后保存的模型目录
+    ├── pytorch_model.bin                  # 模型权重
+    ├── config.json                        # 模型配置
+    ├── tokenizer_config.json              # 分词器配置
+    ├── vocab.json                         # 词表
+    └── classes.npy                        # 流派类别映射
+./music_model_pro/                         # 训练过程临时文件
+confusion_matrix_pro.png                   # 混淆矩阵可视化图
+final_results_pro.csv                      # 测试集预测结果（含文件名/流派/置信度）
