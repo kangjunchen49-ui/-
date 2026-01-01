@@ -1,3 +1,4 @@
+#此代码为生成cat_to_name的json文件，因为源本的数据集没有包含图片内容对应的名称。在flower.data中已有cat_to_name的json文件。
 import json
 import os
 
@@ -119,5 +120,6 @@ if not os.path.exists(folder_path):
 # 4. 保存文件（变量名必须是cat_to_name）
 with open(save_path, "w", encoding="utf-8") as f:
     json.dump(cat_to_name, f, ensure_ascii=False, indent=2)
+
 
 print(f"✅ 文件已生成：{save_path}")
